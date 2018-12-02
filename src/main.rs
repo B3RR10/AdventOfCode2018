@@ -5,6 +5,7 @@ extern crate nom;
 use clap::{App, Arg};
 
 mod day1;
+mod day2;
 mod helper;
 
 fn main() {
@@ -18,10 +19,11 @@ fn main() {
         .arg(Arg::with_name("filename").index(2).help("Input file"))
         .get_matches();
 
-    let input = matches.value_of("filename").expect("Insert a filename");
+    let filename = matches.value_of("filename").expect("Insert a filename");
 
     match matches.value_of("day") {
-        Some("1") => day1::handle_day(input),
+        Some("1") => day1::handle_day(filename),
+        Some("2") => day2::handle_day(filename),
         _ => panic!("Insert a valid day"),
     }
 }
